@@ -6,7 +6,7 @@ module MCepAlpha
 export mcepalpha
 
 # mcepalpha computes appropriate alpha for a given sampling frequency.
-function mcepalpha(sampfreq::Int;
+function mcepalpha(sampfreq;
                    start::Float64=0.0,
                    stop::Float64=1.0,
                    step::Float64=0.001,
@@ -18,7 +18,7 @@ function mcepalpha(sampfreq::Int;
     return alpha_candidates[indmin(distances)]
 end
 
-function melscale_vector(sampfreq::Int, len::Int)
+function melscale_vector(sampfreq, len::Int)
     const step = (sampfreq / 2.0) / len
     melscalev = 1000.0/log(2)*log(1 + step.*[1:len]./1000.0)
     return melscalev / melscalev[end]
